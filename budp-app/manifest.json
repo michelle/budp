@@ -1,0 +1,25 @@
+{
+  "name": "BrowserUDP Helper",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "Exposing Chrome UDP sockets for your convenience.",
+  "permissions": [
+    "background",
+    {
+      "socket": ["udp-send-to"]
+    }
+  ],
+  "app": {
+    "background": {
+      "scripts": ["main.js"]
+    }
+  },
+  "intents": {
+    "chrome-extension://budp-extension": [
+      {
+        "title": "BUDP: Sockets",
+        "type": ["text/plain"]
+      }
+  ]
+}
+}

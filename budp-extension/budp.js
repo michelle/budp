@@ -3,14 +3,20 @@ $(function() {
   var syn_port = chrome.extension.connect({name: 'budp-init'});
 
   /**
+   * Inject a node into the DOM so extension can be detected.
+   */
+  var node = document.createElement('budp');
+  (document.body||document.documentElement).appendChild(node);
+
+  /**
    * Injected script to create a wrapper for window.postMessage.
    * TODO: allow for multiple connections in one window.
    */
   var s = document.createElement('script');
   s.src = chrome.extension.getURL('wrapper.js');
-  s.onload = function() {
-        this.parentNode.removeChild(this);
-  };
+ // s.onload = function() {
+ //   this.parentNode.removeChild(this);
+ // };
   (document.head||document.documentElement).appendChild(s);
 
   /**
