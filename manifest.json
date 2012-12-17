@@ -1,0 +1,28 @@
+{
+  "name": "budp",
+  "version": "1.0",
+  "manifest_version": 2,
+  "web_accessible_resources": [
+    "wrapper.js"
+  ]
+  "description": "Exposing Chrome UDP sockets for your convenience.",
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "permissions": [
+    "tabs",
+    "<all_urls>",
+    {
+      "socket": ["udp-send-to"]
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["budp.js"],
+    }
+  ]
+}
